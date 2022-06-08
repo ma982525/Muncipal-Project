@@ -3,8 +3,8 @@ import { faker } from '@faker-js/faker';
 import { useTheme } from '@mui/material/styles';
 import { Grid, Container, Typography } from '@mui/material';
 // components
-import Page from '../components/Page';
-import Iconify from '../components/Iconify';
+import Page from '../../components/Page';
+import Iconify from '../../components/Iconify';
 // sections
 import {
   AppTasks,
@@ -16,41 +16,41 @@ import {
   AppWidgetSummary,
   AppCurrentSubject,
   AppConversionRates,
-} from '../sections/@dashboard/app';
+} from '../../sections/@dashboard/app';
 
 // ----------------------------------------------------------------------
 
-export default function DashboardApp() {
+export default function UserDashboard() {
   const theme = useTheme();
 
   return (
     <Page title="Dashboard">
       <Container maxWidth="xl">
         <Typography variant="h4" sx={{ mb: 5 }}>
-          Hi, Welcome back
+          Hi, Welcome back User
         </Typography>
 
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Weekly Sales" total={714000} icon={'ant-design:android-filled'} />
+            <AppWidgetSummary title="Total Problems" total={714000} icon={'ic:round-report-problem'} />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="New Users" total={1352831} color="info" icon={'ant-design:apple-filled'} />
+            <AppWidgetSummary title="Problems Resolved" total={700000} color="info" icon={'ant-design:issues-close-outlined'} />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Item Orders" total={1723315} color="warning" icon={'ant-design:windows-filled'} />
+            <AppWidgetSummary title="Problems Pending" total={14000} color="warning" icon={'octicon:issue-reopened-16'} />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Bug Reports" total={234} color="error" icon={'ant-design:bug-filled'} />
+            <AppWidgetSummary title="Total Area's" total={234} color="error" icon={'majesticons:map-marker-area'} />
           </Grid>
 
           <Grid item xs={12} md={6} lg={8}>
             <AppWebsiteVisits
-              title="Website Visits"
-              subheader="(+43%) than last year"
+              title="Issues Raised"
+              subheader="(+13%) than last month"
               chartLabels={[
                 '01/01/2003',
                 '02/01/2003',
@@ -66,19 +66,31 @@ export default function DashboardApp() {
               ]}
               chartData={[
                 {
-                  name: 'Team A',
-                  type: 'column',
+                  name: 'Area A',
+                  type: 'line',
                   fill: 'solid',
                   data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30],
                 },
                 {
-                  name: 'Team B',
-                  type: 'area',
-                  fill: 'gradient',
+                  name: 'Area B',
+                  type: 'line',
+                  fill: 'solid',
                   data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43],
                 },
                 {
-                  name: 'Team C',
+                  name: 'Area C',
+                  type: 'line',
+                  fill: 'solid',
+                  data: [20, 25, 35, 40, 22, 27, 42, 57, 41, 35, 34],
+                },
+                {
+                  name: 'Area D',
+                  type: 'line',
+                  fill: 'solid',
+                  data: [29, 35, 21, 52, 51, 47, 39, 51, 43, 39, 33],
+                },
+                {
+                  name: 'Area E',
                   type: 'line',
                   fill: 'solid',
                   data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
@@ -89,12 +101,12 @@ export default function DashboardApp() {
 
           <Grid item xs={12} md={6} lg={4}>
             <AppCurrentVisits
-              title="Current Visits"
+              title="Pending Issues"
               chartData={[
-                { label: 'America', value: 4344 },
-                { label: 'Asia', value: 5435 },
-                { label: 'Europe', value: 1443 },
-                { label: 'Africa', value: 4443 },
+                { label: 'Area A', value: 4344 },
+                { label: 'Area B', value: 5435 },
+                { label: 'Area C', value: 1443 },
+                { label: 'Area D', value: 4443 },
               ]}
               chartColors={[
                 theme.palette.primary.main,
@@ -105,7 +117,7 @@ export default function DashboardApp() {
             />
           </Grid>
 
-          <Grid item xs={12} md={6} lg={8}>
+          {/* <Grid item xs={12} md={6} lg={8}>
             <AppConversionRates
               title="Conversion Rates"
               subheader="(+43%) than last year"
@@ -135,11 +147,11 @@ export default function DashboardApp() {
               ]}
               chartColors={[...Array(6)].map(() => theme.palette.text.secondary)}
             />
-          </Grid>
+          </Grid> */}
 
           <Grid item xs={12} md={6} lg={8}>
             <AppNewsUpdate
-              title="News Update"
+              title="All Issues"
               list={[...Array(5)].map((_, index) => ({
                 id: faker.datatype.uuid(),
                 title: faker.name.jobTitle(),

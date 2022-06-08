@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 // material
-import { styled } from '@mui/material/styles';
 import { Box, Link, Button, Drawer, Typography, Avatar, Stack } from '@mui/material';
+import { useTheme,styled } from '@mui/material/styles';
 // mock
 import account from '../../_mock/account';
 // hooks
@@ -43,7 +43,7 @@ DashboardSidebar.propTypes = {
 
 export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
   const { pathname } = useLocation();
-
+  const theme = useTheme();
   const isDesktop = useResponsive('up', 'lg');
 
   useEffect(() => {
@@ -57,12 +57,14 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
     <Scrollbar
       sx={{
         height: 1,
-        '& .simplebar-content': { height: 1, display: 'flex', flexDirection: 'column' },
+        '& .simplebar-content': { height: 1, display: 'flex', flexDirection: 'column', backgroundColor:'#00000004' },
       }}
     >
       <Box sx={{ px: 2.5, py: 3, display: 'inline-flex' }}>
         <Logo />
       </Box>
+
+      {/*        // User Details Tab 
 
       <Box sx={{ mb: 5, mx: 2.5 }}>
         <Link underline="none" component={RouterLink} to="#">
@@ -78,7 +80,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
             </Box>
           </AccountStyle>
         </Link>
-      </Box>
+      </Box> */}
 
       <NavSection navConfig={navConfig} />
 
@@ -94,15 +96,18 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
 
           <Box sx={{ textAlign: 'center' }}>
             <Typography gutterBottom variant="h6">
-              Get more?
+              Thanks for Using
             </Typography>
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-              From only $69
+              Copyright Ⓒ 2022 | Rights Reserved
+            </Typography>
+            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+              Municipal Sahayak
             </Typography>
           </Box>
 
-          <Button href="https://material-ui.com/store/items/minimal-dashboard/" target="_blank" variant="contained">
-            Upgrade to Pro
+          <Button href="#" target="_blank" variant="contained" color="error" sx={{':hover': {bgcolor: theme.palette.error.dark ,color: 'white'},}}>
+            Logout
           </Button>
         </Stack>
       </Box>

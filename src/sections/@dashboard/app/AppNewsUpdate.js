@@ -67,9 +67,15 @@ function NewsItem({ news }) {
         </Typography>
       </Box>
 
-      <Typography variant="caption" sx={{ pr: 3, flexShrink: 0, color: 'text.secondary' }}>
-        {fToNow(postedAt)}
-      </Typography>
+      
+      <Box sx={{ p: 2, textAlign: 'right', flex: 1}}>
+        <Typography variant="caption" sx={{ pr: 3, flexShrink: 0, color: 'text.secondary' }} noWrap>
+          {fToNow(postedAt)}
+        </Typography>
+        <Button sx={{pr:3}} size="small" color="primary" >
+          View Details
+        </Button>
+      </Box>
     </Stack>
   );
 }

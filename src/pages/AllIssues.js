@@ -12,23 +12,23 @@ import POSTS from '../_mock/blog';
 
 const SORT_OPTIONS = [
   { value: 'latest', label: 'Latest' },
-  { value: 'popular', label: 'Popular' },
-  { value: 'oldest', label: 'Oldest' },
+  { value: 'pending', label: 'Pending' },
+  { value: 'completed', label: 'Completed' },
 ];
 
 // ----------------------------------------------------------------------
 
-export default function Blog() {
+export default function AllIssues() {
   return (
-    <Page title="Dashboard: Blog">
+    <Page title="Dashboard: Issues">
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            Blog
+            All Issues
           </Typography>
-          <Button variant="contained" component={RouterLink} to="#" startIcon={<Iconify icon="eva:plus-fill" />}>
+          {/* <Button variant="contained" component={RouterLink} to="#" startIcon={<Iconify icon="eva:plus-fill" />}>
             New Post
-          </Button>
+          </Button> */}
         </Stack>
 
         <Stack mb={5} direction="row" alignItems="center" justifyContent="space-between">

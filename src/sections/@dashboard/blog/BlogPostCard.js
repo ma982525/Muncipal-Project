@@ -39,7 +39,7 @@ const InfoStyle = styled('div')(({ theme }) => ({
   flexWrap: 'wrap',
   justifyContent: 'flex-end',
   marginTop: theme.spacing(3),
-  color: theme.palette.text.disabled,
+  color: theme.palette.primary.main,
 }));
 
 const CoverImgStyle = styled('img')({
@@ -58,18 +58,20 @@ BlogPostCard.propTypes = {
 };
 
 export default function BlogPostCard({ post, index }) {
-  const { cover, title, view, comment, share, author, createdAt } = post;
-  const latestPostLarge = index === 0;
-  const latestPost = index === 1 || index === 2;
+  
+  const { cover, title, view, comment, share, author, createdAt,status } = post;
+  const latestPostLarge = index === -1;
+  const latestPost = index === -1 || index === -2;
 
-  const POST_INFO = [
-    { number: comment, icon: 'eva:message-circle-fill' },
-    { number: view, icon: 'eva:eye-fill' },
-    { number: share, icon: 'eva:share-fill' },
-  ];
+  // const POST_INFO = [
+  //   { number: comment, icon: 'eva:message-circle-fill' },
+  //   { number: view, icon: 'eva:eye-fill' },
+  //   { number: share, icon: 'eva:share-fill' },
+  // ];
 
   return (
-    <Grid item xs={12} sm={latestPostLarge ? 12 : 6} md={latestPostLarge ? 6 : 3}>
+    // <Grid item xs={12} sm={latestPostLarge ? 12 : 6} md={latestPostLarge ? 6 : 3}>
+    <Grid item xs={12} sm={6} md={3}>
       <Card sx={{ position: 'relative' }}>
         <CardMediaStyle
           sx={{
@@ -84,12 +86,7 @@ export default function BlogPostCard({ post, index }) {
                 bgcolor: (theme) => alpha(theme.palette.grey[900], 0.72),
               },
             }),
-            ...(latestPostLarge && {
-              pt: {
-                xs: 'calc(100% * 4 / 3)',
-                sm: 'calc(100% * 3 / 4.66)',
-              },
-            }),
+
           }}
         >
           <SvgIconStyle
@@ -153,7 +150,6 @@ export default function BlogPostCard({ post, index }) {
           </TitleStyle>
 
           <InfoStyle>
-            {POST_INFO.map((info, index) => (
               <Box
                 key={index}
                 sx={{
@@ -165,10 +161,10 @@ export default function BlogPostCard({ post, index }) {
                   }),
                 }}
               >
-                <Iconify icon={info.icon} sx={{ width: 16, height: 16, mr: 0.5 }} />
-                <Typography variant="caption">{fShortenNumber(info.number)}</Typography>
+                <Iconify icon={'ant-design:issues-close-outlined'} sx={{ width: 16, height: 16, mr: 0.5 }} />
+                <Typography variant="caption">{status}</Typography>
               </Box>
-            ))}
+            
           </InfoStyle>
         </CardContent>
       </Card>
